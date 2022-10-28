@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Video } from "../customElement/Video";
 
 export const Camera = () => {
@@ -19,20 +19,18 @@ export const Camera = () => {
   }, [deviceList]);
 
   useEffect(() => {
-    (async () => {
-      setDeviceList(await navigator.mediaDevices.enumerateDevices());
-    })();
-
-    const handleDeviceChange = async (event: Event) => {
+    const updateDeviceList = async () => {
       setDeviceList(await navigator.mediaDevices.enumerateDevices());
     };
 
-    navigator.mediaDevices.addEventListener("devicechange", handleDeviceChange);
+    updateDeviceList();
+
+    navigator.mediaDevices.addEventListener("devicechange", updateDeviceList);
 
     return () =>
       navigator.mediaDevices.removeEventListener(
         "devicechange",
-        handleDeviceChange
+        updateDeviceList
       );
   }, []);
 
