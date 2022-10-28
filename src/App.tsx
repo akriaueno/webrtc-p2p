@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Camera } from "./media/Camera";
+import { Camera } from "./device/Camera";
 
 function App() {
   return (
