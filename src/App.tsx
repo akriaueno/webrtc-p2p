@@ -1,13 +1,18 @@
 import React from "react";
-import "./App.css";
-import { Camera } from "./device/Camera";
+import styles from "./App.module.scss";
+import { Camera } from "./component/Camera";
+import { SDPInput } from "./component/SDPInput";
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.app}>
       <Camera />
-      <div>
+      <div className="nameInput">
         私は<input type="text"></input>です
+      </div>
+      <div className={styles.container}>
+        <SDPInput label="generated SDP" />
+        <SDPInput label="remote SDP" placeholder="paste here" />
       </div>
     </div>
   );

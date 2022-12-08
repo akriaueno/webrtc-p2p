@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Video } from "../media/Video";
+import { Video } from "./Video";
 
 export const Camera = () => {
   const [localStream, setLocalStream] = useState<MediaStream | null>(null);
